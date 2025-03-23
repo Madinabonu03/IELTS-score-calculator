@@ -1,4 +1,9 @@
-﻿decimal [] score=new decimal[4];
+﻿using System;
+System.Console.WriteLine("IELTS score average FOR academic");
+string isContinued;
+do 
+{
+decimal [] score=new decimal[4];
 System.Console.Write("Enter your speking score:");
 string speakingInput=Console.ReadLine();
 score[0]=Convert.ToDecimal(speakingInput);
@@ -25,7 +30,20 @@ else {
     reminder=1;
 }
 averageScore=(int)averageScore+reminder;
-System.Console.WriteLine($"Your IELTS score:{averageScore}");
+
+string scoreLevel=averageScore switch
+{
+    _ when averageScore==9=>@"""Expert""",
+    _ when averageScore>=8 && averageScore<9=>@"""Very good""",
+    _ when averageScore>=7 && averageScore<8=>@"""Good""",
+    _ when averageScore>=6 && averageScore<7=>@"""Compotent"" ",
+    _ => "This score is invalid "
+};
+System.Console.WriteLine($"Your averege score is : {averageScore} and you are {scoreLevel} user of English");
+
+System.Console.Write("Do you want to continue :Yes/No:");
+isContinued=Console.ReadLine();
+} while (isContinued.ToLower()=="yes");
 
 
 
